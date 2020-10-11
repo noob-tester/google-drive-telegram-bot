@@ -50,7 +50,7 @@ def _download(client, message):
 def _telegram_file(client, message):
   user_id = message.from_user.id
   if user_id in users:
-     await message.reply('dont send new file')
+  await message.reply('dont send new file')
   else:
     users.append(user_id)
     try:
