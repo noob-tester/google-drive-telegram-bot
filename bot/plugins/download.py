@@ -49,16 +49,7 @@ def _download(client, message):
 @Client.on_message(filters.private & filters.incoming & (filters.document | filters.audio | filters.video | filters.photo) & CustomFilters.auth_users)
 def _telegram_file(client, message):
   user_id = message.from_user.id
-  if user_id in users:
-    await message.reply('dont send new file')
-   else:
-    users.append(user_id)
-    try:
-      msg = await message.reply('downloading')
-      await asyncio.sleep(5)
-      await msg.edit('download next file')
-    finally:
-      users.remove(user_id)
+  
   sent_message = message.reply_text('🕵️**Checking File...**', quote=True)
   if message.document:
     file = message.document
